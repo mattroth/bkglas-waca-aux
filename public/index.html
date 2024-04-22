@@ -1,13 +1,21 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Frame Viewer</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+<script type="text/javascript">
+  setInterval(function() {
+    var frameElement = document.getElementById('currentFrame');
+    frameElement.src = 'frame.png?rand=' + Math.random();
+  }, 1000);
+</script>
+  <h1>Frame Viewer</h1>
+  <p>
+    <img src="frame.png" id="currentFrame" />
+  </p>
 </body>
 
 </html>

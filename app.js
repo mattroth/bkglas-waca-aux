@@ -33,7 +33,7 @@ const childProcess = require('child_process');
  **/
 
 // spawn an node process
-const wsRelay = childProcess.fork('node', ['websocket-relay.js', 'pinball 8081 8082']);
+const wsRelay = childProcess.spawn('node', ['websocket-relay.js', 'pinball 8081 8082']);
 
 wsRelay.on('error', () => {
     // catches execution error (bad file)
@@ -78,7 +78,7 @@ wait(5000);
 const ffmpegPath = require('ffmpeg-static');
 
 // spawn an ffmpeg process
-const ffmpeg = childProcess.fork(
+const ffmpeg = childProcess.spawn(
     ffmpegPath,
     // note, args must be an array when using spawn
     //'', ``,

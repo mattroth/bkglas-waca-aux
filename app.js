@@ -89,7 +89,7 @@ const ffmpeg = childProcess.spawn(
         '-s', '640x480',
         '-b:v', '1000k',
         '-bf', '0',
-        'http://localhost:8081/pinball',
+        'http://127.0.0.1:8081/pinball',
         // map out2 to '/public/frame.png'
         '-map', '[out2]',
         '-q:v', '1',

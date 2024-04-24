@@ -1,21 +1,40 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Frame Viewer</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="utf-8" />
+  <title>Backglass</title>
+  <style type="text/css">
+    html, body {
+      background-color: #FFFFFF;
+      text-align: center;
+    }
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <script src="/js/client.js"></script>
 </head>
-
 <body>
-<script type="text/javascript">
-  setInterval(function() {
-    var frameElement = document.getElementById('currentFrame');
-    frameElement.src = 'frame.png?rand=' + Math.random();
-  }, 1000);
-</script>
-  <h1>Frame Viewer</h1>
-  <p>
-    <img src="frame.png" id="currentFrame" />
-  </p>
-</body>
+<H1>Twilight Zone</H1>
+<p>
+  <canvas id="video-canvas"></canvas>
+  <script type="text/javascript" src="/js/jsmpeg.min.js"></script>
+  <script type="text/javascript">
+    var canvas = document.getElementById('video-canvas');
+    //var url = 'ws://'+document.location.hostname+':8082/';
+    var url = 'ws://192.168.86.212:8082/';
+    var player = new JSMpeg.Player(url, {canvas: canvas});
+  </script>
+</p>
+<p>
+  <button id="0" value="0" style="height:50px;font-size:large">Esc</button>
+  <button id="1" value="1" style="height:50px;font-size:large">-</button>
+  <button id="2" value="2" style="height:50px;font-size:large">+</button>
+  <button id="3" value="3" style="height:50px;font-size:large">Enter</button>
+</p>
+<p>
+  <button id="4" value="4" style="height:50px;font-size:large">Toggle Coin Door</button>
+</p>
 
+
+</body>
 </html>

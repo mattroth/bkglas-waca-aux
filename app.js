@@ -31,9 +31,9 @@ const childProcess = require('child_process');
  START THE LOCAL WEBSOCKET RELAY
  - node websocket-relay pinball 8081 8082
  **/
-/**
+
 // spawn an node process
-const wsRelay = childProcess.spawn('node websocket-relay.js pinball 8081 8082');
+const wsRelay = childProcess.spawn('node', ['websocket-relay.js', 'pinball 8081 8082']);
 
 wsRelay.on('error', () => {
     // catches execution error (bad file)
@@ -58,7 +58,7 @@ wsRelay.on('close', (code) => {
         console.log(`wsRelay encountered an error, check the console output`);
     }
 });
-**/
+
 /**
 TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 

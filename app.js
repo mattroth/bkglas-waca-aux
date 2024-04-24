@@ -65,11 +65,20 @@ TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
  START THE VIDEO INPUT STREAM, OCR INPUT STREAM
  **/
 
+const wait = (ms) => {
+    const start = Date.now();
+    let now = start;
+    while (now - start < ms) {
+        now = Date.now();
+    }
+}
+
+wait(5000);
 
 const ffmpegPath = require('ffmpeg-static');
 
 // spawn an ffmpeg process
-const ffmpeg = childProcess.spawn(
+const ffmpeg = childProcess.fork(
     ffmpegPath,
     // note, args must be an array when using spawn
     //'', ``,

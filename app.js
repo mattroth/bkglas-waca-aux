@@ -33,7 +33,7 @@ const childProcess = require('child_process');
  **/
 
 // spawn an node process
-const wsRelay = childProcess.spawn('node', ['websocket-relay.js', 'pinball 8081 8082']);
+const wsRelay = childProcess.fork('node', ['websocket-relay.js', 'pinball 8081 8082']);
 
 wsRelay.on('error', () => {
     // catches execution error (bad file)

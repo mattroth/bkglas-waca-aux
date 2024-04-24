@@ -31,7 +31,7 @@ const childProcess = require('child_process');
  START THE LOCAL WEBSOCKET RELAY
  - node websocket-relay pinball 8081 8082
  **/
-
+/**
 // spawn an node process
 const wsRelay = childProcess.spawn('node', ['websocket-relay.js', 'pinball 8081 8082']);
 
@@ -58,22 +58,13 @@ wsRelay.on('close', (code) => {
         console.log(`wsRelay encountered an error, check the console output`);
     }
 });
+**/
 
 /**
 TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 
  START THE VIDEO INPUT STREAM, OCR INPUT STREAM
  **/
-
-const wait = (ms) => {
-    const start = Date.now();
-    let now = start;
-    while (now - start < ms) {
-        now = Date.now();
-    }
-}
-
-wait(5000);
 
 const ffmpegPath = require('ffmpeg-static');
 

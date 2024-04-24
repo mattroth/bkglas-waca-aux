@@ -65,7 +65,7 @@ TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
  START THE VIDEO INPUT STREAM, OCR INPUT STREAM
  **/
 
-/**
+
 const ffmpegPath = require('ffmpeg-static');
 
 // spawn an ffmpeg process
@@ -122,5 +122,3 @@ ffmpeg.on('close', (code) => {
         console.log(`FFmpeg encountered an error, check the console output`);
     }
 });
-
- **/

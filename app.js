@@ -82,7 +82,7 @@ const ffmpeg = childProcess.spawn(
         '-video_size', '1920x1080',
         '-i', '/dev/video0',
         // complex filtergraph: (1) split video input
-        '-filter_complex', '[0:v]split=2[in1][in2];[in1]fps=20[out1];[in2]fps=1,boxblur=5:3,format=gray,ocr,mpdecimate[out2]', // 10:2
+        '-filter_complex', '[0:v]split=2[in1][in2];[in1]fps=20[out1];[in2]fps=1,boxblur=5:3,format=gray,mpdecimate[out2]', // 10:2
         // map out1 to mpeg relay server
         '-map', '[out1]',
         '-f', 'mpegts',

@@ -76,6 +76,7 @@ const ffmpeg = childProcess.spawn(
     //'', '',
     [
         // get the hdmi in as a input
+        '-loglevel', 'error',
         '-f', 'v4l2',
         '-framerate', '60',
         '-video_size', '640x480',

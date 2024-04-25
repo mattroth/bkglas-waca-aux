@@ -79,7 +79,7 @@ const ffmpeg = childProcess.spawn(
         '-loglevel', 'error',
         '-f', 'v4l2',
         '-framerate', '60',
-        '-video_size', '640x480',
+        '-video_size', '1920x1080',
         '-i', '/dev/video0',
         // complex filtergraph: (1) split video input
         '-filter_complex', '[0:v]split=2[in1][in2];[in1]fps=20[out1];[in2]fps=1[out2]',
@@ -87,7 +87,7 @@ const ffmpeg = childProcess.spawn(
         '-map', '[out1]',
         '-f', 'mpegts',
         '-codec:v', 'mpeg1video',
-        '-s', '640x480',
+        '-s', '1920x1080',
         '-b:v', '1000k',
         '-bf', '0',
         'http://127.0.0.1:8081/pinball',

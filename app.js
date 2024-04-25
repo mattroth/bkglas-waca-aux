@@ -111,7 +111,7 @@ const ffmpeg = childProcess.spawn(
 
     ]
 );
-**/
+
 ffmpeg.on('error', () => {
     // catches execution error (bad file)
     console.log(`Error executing binary: ${ffmpegPath}`);
@@ -135,3 +135,4 @@ ffmpeg.on('close', (code) => {
         console.log(`FFmpeg encountered an error, check the console output`);
     }
 });
+ **/

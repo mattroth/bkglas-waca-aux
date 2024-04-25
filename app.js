@@ -93,7 +93,7 @@ const ffmpeg = childProcess.spawn(
         'http://127.0.0.1:8081/pinball',
         // map out2 to '/public/frame.png'
         '-map', '[out2]',
-        '-q:v', '31',
+        //'-q:v', '1',
         '-update', '1',
         '-y', './public/images/ocr-frame.png',
 

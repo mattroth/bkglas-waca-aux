@@ -1,37 +1,12 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-module.exports = app;
-
-var bgState = {
-  version: 0.0
-};
-
 const childProcess = require('child_process');
 
 /**
  TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 
- START THE LOCAL WEBSOCKET RELAY
+ LOCAL WEBSOCKET RELAY INIT
  - node websocket-relay pinball 8081 8082
  **/
-/**
+
 // spawn an node process
 const wsRelay = childProcess.spawn('node', ['websocket-relay.js', 'pinball 8081 8082']);
 
@@ -58,14 +33,51 @@ wsRelay.on('close', (code) => {
         console.log(`wsRelay encountered an error, check the console output`);
     }
 });
-**/
+
+/********
+ *
+ * EXPRESS INIT
+ *
+ ********/
+
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+module.exports = app;
+
+var bgState = {
+  version: 0.0
+};
+
+/********
+ *
+ * FFMPEG INIT
+ *
+ ********/
+
 
 /**
 TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 
  START THE VIDEO INPUT STREAM, OCR INPUT STREAM
  **/
-
+/**
 const ffmpegPath = require('ffmpeg-static');
 
 // spawn an ffmpeg process
@@ -99,7 +111,7 @@ const ffmpeg = childProcess.spawn(
 
     ]
 );
-
+**/
 ffmpeg.on('error', () => {
     // catches execution error (bad file)
     console.log(`Error executing binary: ${ffmpegPath}`);

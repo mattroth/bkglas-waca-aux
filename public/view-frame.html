@@ -2,19 +2,19 @@
 
 <head>
     <title>Frame Viewer</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 
 <body>
 <script type="text/javascript">
     setInterval(function() {
         var frameElement = document.getElementById('frame');
-        frameElement.src = '/images/ocr-frame.png?rand=' + Math.random();
+        frameElement.src = './images/ocr-frame.png?rand=' + Math.random();
     }, 1000);
 </script>
 <h1>Frame Viewer</h1>
 <p>
-    <img src="/images/ocr-frame.png" id="frame" />
+    <img src="./images/ocr-frame.png" id="frame" />
 </p>
 </body>
 

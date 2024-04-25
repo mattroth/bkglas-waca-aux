@@ -94,7 +94,7 @@ const ffmpeg = childProcess.spawn(
         '-map', '[out2]',
         '-q:v', '1',
         '-update', '1',
-        '-y', './public/ocr-frame.png',
+        '-y', './public/images/ocr-frame.png',
 
     ]
 );

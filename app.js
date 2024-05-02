@@ -77,13 +77,15 @@ var bgState = {
 TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 
  START THE VIDEO INPUT STREAM, OCR INPUT STREAM
+
+ detect stream close- https://community.render.com/t/nodejs-spawning-child-process-for-ffmpeg/1015
  **/
 
 const ffmpegPath = require('ffmpeg-static');
 
 // spawn an ffmpeg process
 const ffmpeg = childProcess.spawn(
-    ffmpegPath,
+    'ffmpeg',
     // note, args must be an array when using spawn
     //'', ``,
     //'', '',
@@ -110,7 +112,8 @@ const ffmpeg = childProcess.spawn(
         '-update', '1',
         '-y', './public/images/ocr-frame.png',
 
-    ]
+    ],
+    {stdio: ['ignore', process.stdout, process.stderr]}
 );
 
 ffmpeg.on('error', () => {

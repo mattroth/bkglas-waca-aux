@@ -111,9 +111,9 @@ const ffmpeg = childProcess.spawn(
         //'-q:v', '1',
         '-update', '1',
         '-y', './public/images/ocr-frame.png',
-
     ],
-    {stdio: ['ignore', process.stdout, process.stderr]}
+    // {stdio: ['ignore', process.stdout, process.stderr]}
+    {detached: true}
 );
 
 ffmpeg.on('error', () => {

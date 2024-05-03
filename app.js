@@ -150,7 +150,7 @@ ffmpeg.stderr.on('data', (data) => {
     const ocrKey = 'lavfi.ocr.text=';
     const ocrKeyIndex = data.indexOf(ocrKey);
     if (ocrKeyIndex != -1) {
-        const ocrValue = data.substring(ocrKeyIndex + ocrKey.length);
+        const ocrValue = String(data).substring(ocrKeyIndex + ocrKey.length);
         console.log(`OCR TEXT: ${ocrValue}`);
     }
 });

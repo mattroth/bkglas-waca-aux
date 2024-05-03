@@ -87,12 +87,13 @@ console.log(`Starting FFMPEG...`);
 
 const ffmpeg = childProcess.spawn(
     'ffmpeg',    [
-        '-hide_banner', '-loglevel', 'fatal',
+        '-hide_banner',
+        //'-loglevel', 'fatal',
         '-f', 'v4l2',
         '-framerate', '60',
         '-video_size', '1920x1080',
         '-i', '/dev/video0',
-        '-filter_complex', 'fps=1,boxblur=5:3,ocr=language=eng,metadata=print:key=lavfi.ocr.text',
+        '-filter_complex', 'fps=1,boxblur=5:3,negate,ocr=language=eng,metadata=print:key=lavfi.ocr.text',
         '-update', '1',
         '-y', './public/images/ocr-frame.png',
     ]

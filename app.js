@@ -86,7 +86,7 @@ TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 console.log(`Starting FFMPEG...`);
 
 const ffmpeg = childProcess.spawn(
-    ffmpegPath,    [
+    'ffmpeg',    [
         '-f', 'v4l2',
         '-framerate', '60',
         '-video_size', '1920x1080',

@@ -112,7 +112,7 @@ const ffmpeg = childProcess.spawn(
         '-update', '1',
         '-y', './public/images/ocr-frame.png',
     ],
-    {stdio: [process.stdin, process.stdout, process.stderr]}
+    //{stdio: [process.stdin, process.stdout, process.stderr]}
     //{detached: true}
 );
 
@@ -123,7 +123,7 @@ ffmpeg.on('error', () => {
 
 ffmpeg.stdout.on('data', (data) => {
     // console.log(`stdout: ${data}`);
-    console.log(data.toString());
+    console.log("OCR TEXT: " + data.toString());
 });
 
 ffmpeg.stderr.on('data', (data) => {

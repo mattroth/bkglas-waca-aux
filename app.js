@@ -85,6 +85,19 @@ TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
 //const ffmpegPath = require('ffmpeg-static');
 console.log(`Starting FFMPEG...`);
 
+const ffmpeg = childProcess.spawn(
+    ffmpegPath,    [
+        '-f', 'v4l2',
+        '-framerate', '60',
+        '-video_size', '1920x1080',
+        '-i', '/dev/video0',
+        '-filter_complex', 'fps=1,ocr,metadata=print:key=lavfi.ocr.text',
+        '-update', '1',
+        '-y', './public/images/ocr-frame.png',
+    ]
+);
+
+/**
 // spawn an ffmpeg process
 const ffmpeg = childProcess.spawn(
     'ffmpeg',
@@ -117,6 +130,7 @@ const ffmpeg = childProcess.spawn(
     //{stdio: [process.stdin, process.stdout, process.stderr]}
     //{detached: true}
 );
+**/
 
 ffmpeg.on('error', () => {
     // catches execution error (bad file)

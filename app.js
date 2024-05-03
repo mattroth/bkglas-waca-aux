@@ -147,6 +147,7 @@ ffmpeg.stdout.on('data', (data) => {
 ffmpeg.stderr.on('data', (data) => {
     // console.error(`stderr: ${data}`);
     console.log("ffmpeg.stderr.on: " + data.toString());
+    console.log("ffmpeg.stderr.on contains 'lavfi.ocr.text=': " + data.includes("lavfi.ocr.text="));
 });
 
 ffmpeg.on('close', (code) => {

@@ -48,6 +48,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const ffmpegPath = require("ffmpeg-static");
 
 var app = express();
 
@@ -81,7 +82,8 @@ TODO: ABSTRACT THIS OUT TO HANDLE FFMPEG FAILURES
  detect stream close- https://community.render.com/t/nodejs-spawning-child-process-for-ffmpeg/1015
  **/
 
-const ffmpegPath = require('ffmpeg-static');
+//const ffmpegPath = require('ffmpeg-static');
+console.log(`Starting FFMPEG...`);
 
 // spawn an ffmpeg process
 const ffmpeg = childProcess.spawn(

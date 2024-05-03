@@ -146,8 +146,13 @@ ffmpeg.stdout.on('data', (data) => {
 
 ffmpeg.stderr.on('data', (data) => {
     // console.error(`stderr: ${data}`);
-    console.log("ffmpeg.stderr.on: " + data.toString());
-    console.log("ffmpeg.stderr.on contains 'lavfi.ocr.text=': " + data.includes("lavfi.ocr.text="));
+
+    const ocrKey = 'lavfi.ocr.text=';
+    const ocrKeyIndex = data.search(ocrKey);
+    if (ocrKeyIndex != -1) {
+        const ocrValue = data.substring(ocrKeyIndex + ocrKey.length);
+        console.log(`OCR TEXT: ${ocrValue}`);
+    }
 });
 
 ffmpeg.on('close', (code) => {

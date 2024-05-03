@@ -87,6 +87,7 @@ console.log(`Starting FFMPEG...`);
 
 const ffmpeg = childProcess.spawn(
     'ffmpeg',    [
+        '-hide_banner', '-loglevel', 'fatal',
         '-f', 'v4l2',
         '-framerate', '60',
         '-video_size', '1920x1080',

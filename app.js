@@ -91,7 +91,7 @@ const ffmpeg = childProcess.spawn(
         '-framerate', '60',
         '-video_size', '1920x1080',
         '-i', '/dev/video0',
-        '-filter_complex', 'fps=1,ocr,metadata=print:key=lavfi.ocr.text',
+        '-filter_complex', 'fps=1,boxblur=5:3,ocr=language=eng,metadata=print:key=lavfi.ocr.text',
         '-update', '1',
         '-y', './public/images/ocr-frame.png',
     ]
@@ -134,17 +134,17 @@ const ffmpeg = childProcess.spawn(
 
 ffmpeg.on('error', () => {
     // catches execution error (bad file)
-    console.log(`Error executing binary: ${ffmpegPath}`);
+    console.log(`Error executing binary: 'ffmpeg'`);
 });
 
 ffmpeg.stdout.on('data', (data) => {
     // console.log(`stdout: ${data}`);
-    console.log("OCR TEXT: " + data.toString());
+    console.log("ffmpeg.stdout.on: " + data.toString());
 });
 
 ffmpeg.stderr.on('data', (data) => {
     // console.error(`stderr: ${data}`);
-    console.log(data.toString());
+    console.log("ffmpeg.stderr.on: " + data.toString());
 });
 
 ffmpeg.on('close', (code) => {
